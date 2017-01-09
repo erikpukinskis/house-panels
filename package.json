@@ -1,0 +1,14 @@
+{
+  "name": "house-panels",
+  "version": "0.0.0",
+  "description": "4x8 foot wall, floor, and roof sections to make a house out of",
+  "main": "house-panels.js",
+  "dependencies": {
+    "module-library": "*",
+    "house-plan": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikpukinskis/house-panels.git"
+  }
+}
