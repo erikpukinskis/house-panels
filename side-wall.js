@@ -2,7 +2,7 @@ var library = require("module-library")(require)
 
 module.exports = library.export(
   "side-wall",
-  ["./house-plan", "./roof", "./floor-section"],
+  ["house-plan", "./roof", "./floor-section"],
   function(HousePlan, roof, floorSection) {
 
     function sideWall(section, stud, plywood, sloped, trim, sloped, tilted, verticalSlice, insulation, getJoinGaps, getOverhangs, options) {

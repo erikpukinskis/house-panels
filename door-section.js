@@ -2,7 +2,7 @@ var library = require("module-library")(require)
 
 module.exports = library.export(
   "doors",
-  ["./house-plan", "./floor-section", "./face-wall"],
+  ["house-plan", "./floor-section", "./face-wall"],
   function(HousePlan, floorSection, faceWall) {
 
     var DOOR_GAP = 1/4
