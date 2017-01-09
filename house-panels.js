@@ -1,6 +1,6 @@
 var library = require("module-library")(require)
 
-library.define(
+module.exports = library.export(
   "house-panels",
   ["house-plan", "./floor-section", "./face-wall", "./roof", "./door-section", "./side-wall"],
   function(HousePlan, floorSection, faceWall, roof, doorSection, sideWall) {
