@@ -1,3 +1,5 @@
+var library = require("module-library")(require)
+
 library.define(
   "house-panels",
   ["house-plan", "./floor-section", "./face-wall", "./roof", "./door-section", "./side-wall"],
