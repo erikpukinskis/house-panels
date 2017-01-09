@@ -1,6 +1,6 @@
 library.define(
   "house-panels",
-  ["./house-plan", "./floor-section", "./face-wall", "./roof", "./door-section", "./side-wall"],
+  ["house-plan", "./floor-section", "./face-wall", "./roof", "./door-section", "./side-wall"],
   function(HousePlan, floorSection, faceWall, roof, doorSection, sideWall) {
 
     var BACK_WALL_INSIDE_HEIGHT = 80
