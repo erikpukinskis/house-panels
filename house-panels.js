@@ -147,11 +147,31 @@ module.exports = library.export(
       },
     ]
 
+    var byTag = {}
+
+    panels.forEach(function(options) {
+      byTag[options.tag] = options
+    })
+
     function merge(obj1,obj2){
       var obj3 = {};
       for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
       for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
       return obj3;
+    }
+
+    panels.addTo = function(plan, tag, moreOptions) {
+      var options = byTag[tag]
+
+      if (typeof options == "undefined") { 
+        throw new Error("No panel tagged "+tag)
+      }
+
+      if (typeof options.generator != "function") {
+        throw new Error("the .generator attribute on panel tagged "+tag+" isn't a function it's "+options.generator)
+      }
+
+      plan.add(options.generator, merge(options, moreOptions))
     }
 
     return panels
