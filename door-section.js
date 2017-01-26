@@ -1,7 +1,7 @@
 var library = require("module-library")(require)
 
 module.exports = library.export(
-  "doors",
+  "door-section",
   ["house-plan", "./floor-section", "./face-wall"],
   function(HousePlan, floorSection, faceWall) {
 
