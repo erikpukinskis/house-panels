@@ -55,9 +55,6 @@ module.exports = library.export(
         orientation: "horizontal-south"
       })
 
-      if (Number.isNaN(options.zSize - stud.WIDTH)) {
-        debugger
-      }
       stud({
         section: floor,
         name: id+"-front-track",

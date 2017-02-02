@@ -7,8 +7,6 @@ module.exports = library.export(
     function faceWall(section, plywood, stud, trim, sloped, verticalSlice, insulation, getOverhangs, getJoinGaps, batten, options) {
 
       var BATTEN_WIDTH = batten.WIDTH
-
-      debugger
       
       if (!options.orientation) {
         throw new Error("face wall needs an orientation")

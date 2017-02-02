@@ -15,8 +15,6 @@ module.exports = library.export(
     var TRIM_WIDTH = 3.5 
     var BATTEN_WIDTH = HousePlan.parts.batten.WIDTH
 
-    console.log("door trim width:", TRIM_WIDTH)
-
     function doors(section, door, trim, plywood, stud, sloped, verticalSlice, options) {
 
       var joins = HousePlan.helpers.getJoinGaps(options)
@@ -28,8 +26,6 @@ module.exports = library.export(
       var jambWidth = plywood.THICKNESS*2 + stud.DEPTH + 0.5
 
       var rightWallExtra = TRIM_WIDTH - trim.THICKNESS - DOOR_GAP - stud.WIDTH - 0.75 + BATTEN_WIDTH/2
-
-      console.log("extra:", rightWallExtra)
 
       var rightWallWidth = TRIM_WIDTH - trim.THICKNESS - DOOR_GAP - BATTEN_WIDTH/2
 

@@ -23,10 +23,6 @@ module.exports = library.export(
 
       var overhangs = getOverhangs(options)
 
-      if (options.name == "left-wall-A") {
-        console.log("side wall overhang: ", overhangs.left)
-      }
-
       var sheathingHeight = options.ySize + overhangs.top + overhangs.bottom + overhangs.right*options.slope
 
       var sheathingWidth = options.zSize + overhangs.left + overhangs.right
@@ -43,7 +39,6 @@ module.exports = library.export(
 
       describePly("sheathing height", options.zSize, sheathingHeight)
 
-      console.log("zPos:", options.zPos, "leftHang:", overhangs.left)
       sloped({
         section: wall,
         name: name+"-sheathing",
@@ -100,17 +95,18 @@ module.exports = library.export(
       describeStud(1, firstStudHeight)
 
       function describeStud(name, height) {
+        return
         if (options.name != "left-wall-A") {return}
         var shorterHeight = height - options.slope*stud.WIDTH
       }
 
       function describePly(name, width, height) {
+        return
         if (options.name != "left-wall-A") {return}
         var shorterHeight = height - options.slope*width
       }
 
       function describe(name, dimension) {
-        if (options.name != "left-wall-A") {return}
       }
 
       var maxOffset = options.zSize - joins.right - stud.WIDTH
