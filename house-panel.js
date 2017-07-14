@@ -48,12 +48,76 @@ module.exports = library.define(
       ["Get workshop 8' 2x4s", 7, "$56.00"],
     ])
 
+    var tinyHouse3 = issueBond("Tiny House 3", [
 
+    ])
 
+    var kitchen = issueBond("Falafel Kitchen", [
+      "Make poulish",
+      "Make dough",
+      "Make falafel sandwich",
+    ])
+
+    kitchen.addExpenses([
+      ["Flat top griddle station", 1, "$263.20"],
+      "50 lb bag of flour",
+      "Toaster oven",
+      "Card table",
+      "2 chairs",
+      "Extension cord",
+      "2 fermentation tubs",
+      "Sourdough starter",
+      "Salt",
+      "Wooden box",
+      "2 gallons water",
+      "Can of chickpeas",
+      "Parsley",
+      "Garlic",
+      "Tahini",
+      "Onion",
+      "Olive oil",
+      "Cornmeal",
+      "Electric burner",
+      "Pot",
+      "Power strip",
+      "Tongs, bowl, silicone spatula",
+      "Hand washing station",
+    ])
+
+    var watershed = issueBond("watershed", [
+      chickenCoop,
+      pond,
+      pergola,
+      kitchen,
+      tinyHouse3,
+    ])
+
+    var pond = issueBond("pond", [
+      "roll two 2x4s into 8x16 tarp ", 
+      "dig pond, build watershed, lay tarp", 
+      "pavers and mortar, build compost basin", 
+      "pond pours off into compost pile, which drains into irrigation pit", 
+      "bucket for bringing water up to irrigation ditch",
+      "18 inch wide 18 inch deep ledge around pond",
+      "// natural liner require 2:1 slope... 2ft depth = 6 ft width, requires moderate level of clay",
+      "// plastic liner lets you have vertical sides",
+      "2 ft depth = minimum for fish",
+      "4 ft tall, 8ft long staple",
+      "shade fabric, rings",
+      "fill pond",
+      "plant lilies https://www.youtube.com/watch?v=mHpayuscOtM",
+    ])
+
+    var chickenCoop = issueBond("chicken coop", [
+      "bolt corrugated roofing",
+      "cut mortisse and tenon two sets of four 2x2s, four 2x2 rafters, and however many floor boards",
+      "built chicken coop",
+      "netting with stakes 8x8",
+    ])
 
     host.onSite(function(site) {
       site.addRoute("get", "panel-house-bonds/",
-      sellBond(workshop, tinyHouse3, kitchen)
+      sellBond(workshop, tinyHouse3, kitchen, chickenCoop, pond)
     })
 
   }
