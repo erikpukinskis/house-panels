@@ -71,7 +71,7 @@ module.exports = library.export(
         xPos: framingOffset,
         yPos: FLOORING_THICKNESS + SUBFLOOR_THICKNESS,
         ySize: stud.DEPTH,
-        zSize: 72
+        zSize: options.zSize
       }
 
       stud(joist, {

@@ -5,7 +5,12 @@
   "main": "house-panels.js",
   "dependencies": {
     "module-library": "*",
-    "house-plan": "*"
+    "house-plan": "*",
+    "issue-bond": "*",
+    "sell-bond": "*",
+    "web-host": "*",
+    "basic-styles": "*",
+    "web-element": "*"
   },
   "repository": {
     "type": "git",

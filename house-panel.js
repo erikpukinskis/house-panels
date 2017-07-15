@@ -1,22 +1,10 @@
 var library = require("module-library")(require)
 
-module.exports = library.define(
-  "house-panel",
-  ["issue-bond", "sell-bond", "web-host"],
-  function(issueBond, sellBond, host) {
+library.using(
+  ["issue-bond", "sell-bond", "web-host", "basic-styles", "fs", "web-element"],
+  function(issueBond, sellBond, host, basicStyles, fs, element) {
 
     var workshop = issueBond("workshop", [
-      "Get drill bit for 4x4 bolts",
-      "Get drill",
-      "Get extension cord",
-      "Get gasketed screws",
-      "Get bolts",
-      "H1 Hurricane clips",
-      "Get workshop 10' 2x4s",
-      "Get workshop 12' 2x6s",
-      "Get workshop 4x4s",
-      "Get workshop 12ft corrugated",
-      "Get workshop 8' 2x4s",
       "Mark 12 inches from the end of each of the 12 foot 2x6s",
       "Mark 3 1/2 inches from the top of each of the 8 foot 4x4s",
       "Lay down two 4x4s, with a 2x6 across it, leaving the 3 1/2 inches free at the top, square and tack in place",
@@ -32,7 +20,7 @@ module.exports = library.define(
       "Screw 8 ft 2x4s into ",
     ])
 
-    workshop.addExpenses([
+    workshop.addExpense([
       ["Get drill bit for 4x4 bolts",  1, "$5.00"],
       ["Get drill", 1, "$100.00"],
       ["Get extension cord", 1, "$13.00"],
@@ -52,13 +40,19 @@ module.exports = library.define(
 
     ])
 
+    var pergola = issueBond("Pergola for mobile kitchen", [
+
+    ])
+
+    // Your kitchen is your mobile marketing heart
+
     var kitchen = issueBond("Falafel Kitchen", [
       "Make poulish",
       "Make dough",
       "Make falafel sandwich",
     ])
 
-    kitchen.addExpenses([
+    kitchen.addExpense([
       ["Flat top griddle station", 1, "$263.20"],
       "50 lb bag of flour",
       "Toaster oven",
@@ -115,10 +109,68 @@ module.exports = library.define(
       "netting with stakes 8x8",
     ])
 
-    host.onSite(function(site) {
-      site.addRoute("get", "panel-house-bonds/",
-      sellBond(workshop, tinyHouse3, kitchen, chickenCoop, pond)
+    var page = element(
+      ".lil-page",
+      element("h1", "Bond Catalog"),
+      element.stylesheet([
+        element.style(".source-line", {
+          "margin-bottom": "5px",
+          "min-height": "1em",
+        }),
+      ])
+    )
+
+
+    fs.readFile("./house-panel.js", "utf8", function (error, source) {
+      if (error) {
+        throw(error)
+      }
+
+      var lines = source.split("\n")
+      var statements = element(
+        element.style({
+          "padding-left": "10px",
+          "border-left": "2px solid #CCF",
+        }),
+        lines.map(function(line) {
+          return element(".source-line", line)
+        })
+      )
+
+      page.addChild(element("h1", "Source code for this page"))
+
+      page.addChild(statements)
     })
 
-  }
+    var bonds = {
+      "Workshop": "$500",
+      "Tiny House 3": "$2000",
+      "Falafel Kitchen": "$1000",
+      "Chicken Coop": "$500",
+      "Pond": "$500",
+      "Whole Watershed": "$4400 ($100 discount!)"
+    }
 
+    for (var name in bonds) {
+      var price = bonds[name]
+      var button = element(".button", "Buy "+name+" bond - "+price)
+      page.addChildren(element("p", button, " "))
+    }
+
+    host.onRequest(function(getBridge) {
+      var bridge = getBridge()
+      basicStyles.addTo(bridge)
+      bridge.send(page)
+    })
+
+    host.onSite(function(site) {
+      site.addRoute(
+        "get",
+        "panel-house-bonds/",
+        sellBond(workshop, tinyHouse3, kitchen, chickenCoop, pond)
+      )
+    })
+
+    return {}
+  }
+)
