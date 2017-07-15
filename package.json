@@ -12,6 +12,9 @@
     "basic-styles": "*",
     "web-element": "*"
   },
+  "scripts": {
+    "start": "node house-panel"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/erikpukinskis/house-panels.git"
