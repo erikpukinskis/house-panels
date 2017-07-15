@@ -17,8 +17,7 @@ library.using(
       "Add brackets to the 2x6s at 3 foot 4 inches from each 2x4",
       "Screw 10 foot 2x4s into each bracket",
       "Screw down roofing into 2x4s with gasketed screws",
-      "Screw 8 ft 2x4s into ",
-    ])
+      "Screw 8 ft 2x4s into ",])
 
     workshop.addExpense([
       ["Get drill bit for 4x4 bolts",  1, "$5.00"],
@@ -33,24 +32,20 @@ library.using(
       ["Get workshop 12' 2x6s", 2, "$24.00"],
       ["Get workshop 4x4s", 4, "$72.00"],
       ["Get workshop 12ft corrugated", 5, "$140.00"],
-      ["Get workshop 8' 2x4s", 7, "$56.00"],
-    ])
+      ["Get workshop 8' 2x4s", 7, "$56.00"],])
 
     var tinyHouse3 = issueBond("Tiny House 3", [
-
-    ])
+      "lay down steel"])
 
     var pergola = issueBond("Pergola for mobile kitchen", [
-
-    ])
+      "mark 12 inches from the end of each"])
 
     // Your kitchen is your mobile marketing heart
 
     var kitchen = issueBond("Falafel Kitchen", [
       "Make poulish",
       "Make dough",
-      "Make falafel sandwich",
-    ])
+      "Make falafel sandwich"])
 
     kitchen.addExpense([
       ["Flat top griddle station", 1, "$263.20"],
@@ -75,16 +70,14 @@ library.using(
       "Pot",
       "Power strip",
       "Tongs, bowl, silicone spatula",
-      "Hand washing station",
-    ])
+      "Hand washing station"])
 
     var watershed = issueBond("watershed", [
       chickenCoop,
       pond,
       pergola,
       kitchen,
-      tinyHouse3,
-    ])
+      tinyHouse3])
 
     var pond = issueBond("pond", [
       "roll two 2x4s into 8x16 tarp ", 
@@ -99,48 +92,45 @@ library.using(
       "4 ft tall, 8ft long staple",
       "shade fabric, rings",
       "fill pond",
-      "plant lilies https://www.youtube.com/watch?v=mHpayuscOtM",
-    ])
+      "plant lilies https://www.youtube.com/watch?v=mHpayuscOtM"])
 
     var chickenCoop = issueBond("chicken coop", [
       "bolt corrugated roofing",
       "cut mortisse and tenon two sets of four 2x2s, four 2x2 rafters, and however many floor boards",
       "built chicken coop",
-      "netting with stakes 8x8",
-    ])
+      "netting with stakes 8x8"])
+
+    var line = element.style(".statements div", {
+      "margin-bottom": "10px",
+      "min-height": "1em"})
 
     var page = element(
       ".lil-page",
       element("h1", "Bond Catalog"),
-      element.stylesheet([
-        element.style(".source-line", {
-          "margin-bottom": "5px",
-          "min-height": "1em",
-        }),
-      ])
-    )
+      element.stylesheet(line))
 
 
     fs.readFile("./house-panel.js", "utf8", function (error, source) {
       if (error) {
-        throw(error)
-      }
+        throw(error)}
 
-      var lines = source.split("\n")
+      var lines = source.split("\n").slice(2)
+
+
       var statements = element(
+        ".statements",
+        {contenteditable: "true"},
         element.style({
           "padding-left": "10px",
-          "border-left": "2px solid #CCF",
-        }),
-        lines.map(function(line) {
-          return element(".source-line", line)
-        })
-      )
+          "border-left": "2px solid #CCF"}),
+        lines.map(toLine))
 
       page.addChild(element("h1", "Source code for this page"))
 
-      page.addChild(statements)
-    })
+      page.addChild(statements)})
+
+    function toLine(line) {
+      return element(element.raw(line))}
 
     var bonds = {
       "Workshop": "$500",
@@ -148,29 +138,16 @@ library.using(
       "Falafel Kitchen": "$1000",
       "Chicken Coop": "$500",
       "Pond": "$500",
-      "Whole Watershed": "$4400 ($100 discount!)"
-    }
+      "Whole Watershed": "$4400 ($100 discount!)"}
 
     for (var name in bonds) {
       var price = bonds[name]
       var button = element(".button", "Buy "+name+" bond - "+price)
-      page.addChildren(element("p", button, " "))
-    }
+      page.addChildren(element("p", button, " "))}
 
     host.onRequest(function(getBridge) {
       var bridge = getBridge()
       basicStyles.addTo(bridge)
-      bridge.send(page)
-    })
+      bridge.send(page)})
 
-    host.onSite(function(site) {
-      site.addRoute(
-        "get",
-        "panel-house-bonds/",
-        sellBond(workshop, tinyHouse3, kitchen, chickenCoop, pond)
-      )
-    })
-
-    return {}
-  }
-)
+    return {}})
