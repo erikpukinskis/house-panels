@@ -1,5 +1,17 @@
 var library = require("module-library")(require)
 
+
+
+// bond.doIn("May 2017", [
+//   "ezjs.js/house-panel-bond shows this code",
+//   "click Buy Bond",
+//   "bobby gets work notification",
+// ])
+//
+// Bobby texts "sure I will be on the 9:15 train"
+// AI asks "Does this mean yes, or no?
+
+
 library.using(
   ["issue-bond", "sell-bond", "web-host", "basic-styles", "fs", "web-element"],
   function(issueBond, sellBond, host, basicStyles, fs, element) {
