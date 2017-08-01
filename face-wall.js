@@ -1,9 +1,14 @@
 var library = require("module-library")(require)
 
 
-// https://www.amazon.com/Woodtek-160550-Hardware-Furniture-Fasteners/dp/B00887N7S4/ref=sr_1_3?ie=UTF8&qid=1499984827&sr=8-3&keywords=bed+rail+fastener
+// knockdown hardware
+// bed frame fastener
+// t-nut
+// sex bolt
+// threaded insert
 
-
+// Structural Insulated Panels: http://www.acmepanel.com/Benefits-of-our-sips.asp
+// https://innovaecobuildingsystem.com/sip-building-kit-cost/
 
 module.exports = library.export(
   "face-wall",
