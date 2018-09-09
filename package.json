@@ -8,12 +8,15 @@
     "house-plan": "*",
     "issue-bond": "*",
     "sell-bond": "*",
-    "web-host": "*",
     "basic-styles": "*",
     "web-element": "*"
   },
+  "devDependencies": {
+    "web-host": "*",
+    "render-house-plan": "*"
+  },
   "scripts": {
-    "start": "node house-panel"
+    "start": "node demo"
   },
   "repository": {
     "type": "git",
